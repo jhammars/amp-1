@@ -15,6 +15,7 @@ An AMP HTML tutorial - learn the different building blocks of an AMP HTML file. 
     <meta charset="utf-8">
     <!-- The AMP runtime must be loaded as the second child of the `<head>` tag.-->
     <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
     <!--
     AMP HTML files require a canonical link pointing to the regular HTML. If no HTML version exists, it should point to itself.
   -->
@@ -106,6 +107,17 @@ An AMP HTML tutorial - learn the different building blocks of an AMP HTML file. 
     Most HTML tags can be used directly in AMP HTML.
   -->
     <h1>Hello World!</h1>
+
+    <amp-state id="products" src="https://ampbyexample.com/json/products.json"></amp-state>
+
+    <amp-img on="tap:AMP.setState({ productId: 0})" src="/img/red_apple_1_60x40.jpg" width="60" height="40" role="button" tabindex="0">
+    </amp-img>
+    <amp-img on="tap:AMP.setState({ productId: 1})" src="/img/green_apple_1_60x40.jpg" width="60" height="40" role="button" tabindex="0">
+    </amp-img>
+    <amp-img on="tap:AMP.setState({ productId: 2})" src="/img/product1_alt1_60x40.jpg" width="60" height="40" role="button" tabindex="0">
+    </amp-img>
+    <div [text]="products[productId] + ' available'">Please select a product</div>
+
     <!--
     Certain tags, such as the `<img>` tag, are replaced
     with equivalent or slightly enhanced custom AMP HTML tags (see
